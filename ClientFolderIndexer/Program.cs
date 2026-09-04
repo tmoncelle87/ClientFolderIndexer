@@ -21,7 +21,7 @@ namespace FolderIndexer
             //Paste the full path AND the desired file name
             string outputFile = @"\Path\To\Your\Folder\MyIndexName" + ".xlsx";
 
-            // Ensure the output directory exists
+            //Ensures the output directory exists
             string? outputDir = Path.GetDirectoryName(outputFile);
             if (!string.IsNullOrEmpty(outputDir))
             {
@@ -32,7 +32,7 @@ namespace FolderIndexer
 
             try
             {
-                // Grab directories instead of files
+                //Grabs directories
                 folders = Directory.GetDirectories(folderPath);
             }
             catch (UnauthorizedAccessException)
@@ -59,7 +59,7 @@ namespace FolderIndexer
                 ws.Cell(1, 2).Value = "Folder Name";
                 ws.ShowGridLines = false;
 
-                //Styles the Header Row a blue color
+                //Styles the Header Row a dark blue color
                 var headerRange = ws.Range(1, 1, 1, 2);
                 headerRange.Style.Font.Bold = true;
                 headerRange.Style.Fill.BackgroundColor = XLColor.LightBlue;
@@ -71,7 +71,7 @@ namespace FolderIndexer
                 {
                     ws.Cell(row, 1).Value = count++;
 
-                    // Extracts just the folder name from the path
+                    //Extracts just the folder name from the path
                     ws.Cell(row, 2).Value = new DirectoryInfo(dirPath).Name;
 
                     row++;
@@ -81,7 +81,7 @@ namespace FolderIndexer
                 var dataRange = ws.Range(2, 1, row - 1, 2);
                 dataRange.Style.Fill.BackgroundColor = XLColor.AliceBlue;
 
-                //Draw the thick black box around the WHOLE table
+                //Draws a black box around the table
                 var fullTableRange = ws.Range(1, 1, row - 1, 2);
                 fullTableRange.Style.Border.OutsideBorder = XLBorderStyleValues.Medium;
                 fullTableRange.Style.Border.OutsideBorderColor = XLColor.Black;
@@ -96,7 +96,7 @@ namespace FolderIndexer
                 ws.Columns().AdjustToContents();
                 ws.Column(2).Width = 40;
 
-                // Align the index numbers to the left to create a gap before the title
+                //Align the index numbers to the left to create a gap before the title
                 ws.Column(1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                 ws.Column(2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
