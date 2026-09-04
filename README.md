@@ -7,3 +7,9 @@ A lightweight C# console utility designed to generate professional directory cat
 * **Alphabetical Sorting:** Automatically orders folders to create a clean, easy-to-read catalog.
 * **Polished Excel Export:** Powered by ClosedXML, the output features custom LightBlue/AliceBlue row styling, thick black borders, and hidden gridlines.
 * **Smart Formatting:** Automatically adjusts column widths to fit your folder names, left-aligns index numbers for a clean margin, and center-aligns folder text.
+
+  
+## Installation & Setup
+1. Clone the repository.
+2. Open the project in Visual Studio.
+3. Ensure the ClosedXML package is installed via the NuGet Package Manager.
